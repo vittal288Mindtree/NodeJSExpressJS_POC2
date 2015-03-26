@@ -1,1 +1,51 @@
-﻿
+﻿	START MANGO DB
+#1 Open CMD as administrator 
+#2 Type mongod --dbpath=C:\MongoDB\data\db and enter(I have set path for "C:\MongoDB\mongodb-win32-x86_64-v2.4-latest\bin" in environment varible )
+#3 MongoDB server will start with success message
+#4 open another command and type
+#5 and type mongo and this step will leads to MONGO commands like as follows
+
+C:\Users\m1020535>mongo
+MongoDB shell version: 2.4.9-pre-
+connecting to: test
+> show dbs
+>show collections
+@@@@CRTEATE DATABASE@@@@
+>use databaseName
+@@@@Create Collections@@@@
+>use databaseName
+>db.sample_col.insert({key:"key Value"})
+
+@@@@CREATE COLLECTION@@@@
+db.createCollection('blobSchema', { name: String, badge: Number, dob: { type: Date, default: Date.now },isloved: Boolean } )
+
+@@@@EXPORT,IMPORT,Dump and Store @@@@@
+##Export to JSON
+C:\Users\m1020535\Desktop\Vision Media\mongoDB\dumps>mongoexport -d sample -c user_records -o output.json
+connected to: 127.0.0.1
+exported 4 records
+
+##Import from JSON
+C:\Users\m1020535\Desktop\Vision Media\mongoDB\dumps>mongoimport -d sample -c user_records output.json
+connected to: 127.0.0.1
+Mon Mar 16 16:24:07.072 imported 4 objects
+
+##Dump All collections of database using mongodump
+C:\Users\m1020535\Desktop\Vision Media\mongoDB\dumps>mongodump -d sample
+connected to: 127.0.0.1
+
+##Store All collection to a New Database using mongostore
+C:\Users\m1020535\Desktop\Vision Media\demo\dump\conduco_development>mongorestore --drop --db conduco_development ./
+C:Folder_path_of_dump_from_mongoDb>mongorestore --drop --db database_name ./
+OR
+C:\any_folder_path>mongostore --drop --db databaseName c:\Folder_path_of_dump_from_mongoDb
+
+###Delete Records from Collection and entire collection
+db.user_records.remove({userName:"Vittal Kamkar"})
+db.collection.remove();
+
+####DROP DATABASE###
+>show dbs
+>use sample_db
+>db.dropDatabase()
+

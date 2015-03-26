@@ -6,6 +6,7 @@ var express = require('express'),
 
 //Any requests to this controller must pass through this 'use' function
 //Copy and pasted from method-override
+
 router.use(bodyParser.urlencoded({ extended: true }))
 router.use(methodOverride(function(req, res){
       if (req.body && typeof req.body === 'object' && '_method' in req.body) {
@@ -56,8 +57,9 @@ router.route('/')
             name : name,
             badge : badge,
             dob : dob,
-            isloved : isloved
-        }, function (err, blob) {
+            isloved: isloved,
+            company: company
+        }, function (err, blob) {             
               if (err) {
                   res.send("There was a problem adding the information to the database.");
               } else {
@@ -82,7 +84,7 @@ router.route('/')
 
 /* GET New Blob page. */
 router.get('/new', function (req, res) {
-    //res.send("Welcome to POC2");
+    //this will render the html page from view/blobs/new
     res.render('blobs/new', { title: 'Add New Blob' });
 });
 

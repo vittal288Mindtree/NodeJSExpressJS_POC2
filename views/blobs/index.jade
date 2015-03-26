@@ -1,9 +1,10 @@
 extends ../layout
 
 block content
+ .row
     h1.
          #{title}
-    ul
+    ul#userList
         - each blob, i in blobs
             li
                 = blob.name
@@ -11,6 +12,7 @@ block content
                 = blob.dob
                 = blob.isloved
                 = blob._id
+                = blob.company
                 form(action='/blobs/#{blob._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
                     input(type='hidden',value='DELETE',name='_method')
                     button(type='submit').
@@ -19,3 +21,32 @@ block content
                     a(href='/blobs/#{blob._id}/edit') Edit
                 p
                     a(href='/blobs/#{blob._id}') Show
+    table.bordered-table
+        thead
+             th Name
+             th Badge
+             th DOB
+             th Is Loved             
+             th Company
+             th Operations
+             tbody                                    
+                  - each blob in blobs                                          
+                      tr 
+                        td=blob.name
+                        td=blob.badge  
+                        td=blob.dob 
+                        td=blob.isloved 
+                        td=blob.company 	                       
+                        td           						  	
+                          .row
+                              .large-4.medium-4.columns
+                                      a(class='small button',href='/blobs/#{blob._id}/edit') Edit
+                              .large-4.medium-4.columns
+                                      a(class='small secondary button',href='/blobs/#{blob._id}') Show
+                              .large-4.medium-4.columns
+                                      form(action='/blobs/#{blob._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
+                                          input(type='hidden',value='DELETE',name='_method')
+                                          button(class='small alert button',type='submit',value='Delete').
+                                                 Delete
+                          
+                               

@@ -1,9 +1,24 @@
 extends ../layout
 
 block content
+ .row
     h1.
-        Infophoto #{blob._id}
+        Details About #{blob._id}
     p Name: #{blob.name}
     p Badge: #{blob.badge}
     p DOB: #{blobdob}
-    p Is Loved: #{blob.isloved}
+    p Is Loved: #{blob.isloved}    
+    table.bordered-table
+         thead
+             th Name
+             th Badge
+             th DOB
+             th Is Loved
+             th Company
+         tbody
+             tr
+               td #{blob.name}
+               td #{blob.badge}
+               td #{blob.dob}
+               td #{blob.isloved}
+               td #{blob.company}
