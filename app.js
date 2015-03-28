@@ -71,3 +71,5 @@ module.exports = app;
 // @@@@ https://www.airpair.com/javascript/complete-expressjs-nodejs-mongodb-crud-skeleton
 
 //INDEX  PAGE URL http://localhost:8888/blobs/new
+
+//once you start the server then hit the usrl http://127.0.0.1:8888/blobs/new
