@@ -1,9 +1,8 @@
 extends ../layout
-
 block content
  .row
     h1.
-         #{title}
+         #{tempObj.name}
     ul#userList
         - each blob, i in blobs
             li
